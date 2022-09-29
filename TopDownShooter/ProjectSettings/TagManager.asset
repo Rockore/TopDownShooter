@@ -10,6 +10,10 @@ TagManager:
   - Weapon
   - Spawnpoint
   - Rooms
+  - TopDoor
+  - LeftDoor
+  - BottomDoor
+  - RightDoor
   layers:
   - Default
   - TransparentFX

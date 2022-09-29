@@ -4524,9 +4524,10 @@ GameObject:
   - component: {fileID: 5303748626650447085}
   - component: {fileID: 1210027434}
   - component: {fileID: 1210027433}
+  - component: {fileID: 4375410497909731424}
   m_Layer: 0
-  m_Name: Tilemap
-  m_TagString: Untagged
+  m_Name: Door B
+  m_TagString: BottomDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4828,3 +4829,15 @@ CompositeCollider2D:
       - {x: -0.75592303, y: -5.2559524}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
+--- !u!114 &4375410497909731424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040071068442296995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7349f819906d74b4696161e996e586b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
