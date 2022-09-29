@@ -1,0 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CameraBehavior : MonoBehaviour
+{
+    Camera cam;
+
+    void Start()
+    {
+        cam = GetComponent<Camera>();
+    }
+
+    void Update()
+    {
+        
+    }
+}
