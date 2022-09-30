@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,13 +17,14 @@ public class PlayerMovement : MonoBehaviour
     {
         cameraHeight = Camera.main.orthographicSize;
         cameraWidth = cameraHeight * Camera.main.aspect;
+
+        DoorBehaviors.GoThroughDoorEvent += MovePlayerRooms;
     }
 
     void FixedUpdate()
     {
         Sprint();
         Movement();
-        ClampToCamera();
     }
 
     private void Movement()
@@ -64,21 +66,24 @@ public class PlayerMovement : MonoBehaviour
         currentMovementSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintMovementSpeed : normalMovementSpeed;
     }
 
-    private void FollowMouse()
+    public void MovePlayerRooms(object source, GoThroughDoorArgs args)
     {
-        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        difference.Normalize();
-        float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg - 90f;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotationZ + 90);
-    }
-
-    private void ClampToCamera()
-    {
-        if (this.gameObject.transform.position.x >= cameraWidth || this.gameObject.transform.position.x <= -cameraWidth || this.gameObject.transform.position.y >= cameraHeight || this.gameObject.transform.position.y <= -cameraHeight)
+        switch (args.Direction)
         {
-            float x = Mathf.Clamp(this.gameObject.transform.position.x, -cameraWidth, cameraWidth);
-            float y = Mathf.Clamp(this.gameObject.transform.position.y, -cameraHeight, cameraHeight);
-            this.gameObject.transform.position = new Vector3(x, y);
+            case "TopDoor":
+                this.gameObject.transform.position += new Vector3(0, 9);
+                break;
+            case "RightDoor":
+                this.gameObject.transform.position += new Vector3(6, 0);
+                break;
+            case "BottomDoor":
+                this.gameObject.transform.position += new Vector3(0, -9);
+                break;
+            case "LeftDoor":
+                this.gameObject.transform.position += new Vector3(-6, 0);
+                break;
+            default:
+                return;
         }
     }
 }

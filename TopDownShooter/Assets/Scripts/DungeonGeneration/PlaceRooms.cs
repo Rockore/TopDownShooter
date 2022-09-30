@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class PlaceRooms : MonoBehaviour
 {
-    /* TODO
-     *  * ~Random place rooms that connect to atleast one neighbor
-     *  * Create a method to help prevent rooms froms clumping by randomly restricting placed to only one neighbor
-     *  * ~Go through the rooms array and find neighbors and place the correct sprite
-     *  * ~Give rooms types for spawning (SpawnRoom, BossRoom, LootRoom, Etc) and place correct sprite and info
-     */
-
     //2D array of rooms
     Room[,] rooms;
 

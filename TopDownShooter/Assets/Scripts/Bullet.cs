@@ -8,14 +8,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent<Bullet>() != null)
-        {
-            return;
-        }
-        if(collision.gameObject.GetComponent<EnemyAI>() != null)
-        {
-            
-        }
+
     }
 
     void OnBecameInvisible()
