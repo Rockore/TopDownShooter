@@ -28,10 +28,10 @@ public class CameraBehavior : MonoBehaviour
                 cam.transform.position += new Vector3(20, 0);
                 break;
             case "BottomDoor":
-                cam.transform.position += new Vector3(0, -15);
+                cam.transform.position -= new Vector3(0, 15);
                 break;
             case "LeftDoor":
-                cam.transform.position += new Vector3(-20, 0);
+                cam.transform.position -= new Vector3(20, 0);
                 break;
             default:
                 return;

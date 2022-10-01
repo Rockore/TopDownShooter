@@ -912,7 +912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSizeX: 10
   gridSizeY: 10
-  numberOfRooms: 5
+  numberOfRooms: 10
 --- !u!4 &1177704040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2704943695603644150, guid: d16af7a791771cd4fb8346b186d50ef0, type: 3}
