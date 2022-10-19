@@ -7,3 +7,5 @@ Create Enemies - create enemies using a class, find way to give each enemy uniqu
 Create Bosses - create bosses using a class, find way to give each boss unique AI without need individual scripts
 
 Disable Rooms - if not in room disable it and make it know which room the player is in
+
+Weapon Attack - add an animation for melee attack and add hit box and damaage system
