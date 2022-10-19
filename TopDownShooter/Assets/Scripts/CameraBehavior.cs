@@ -19,22 +19,23 @@ public class CameraBehavior : MonoBehaviour
 
     private void ClampToRoom(object source, GoThroughDoorArgs args)
     {
-        switch (args.Direction)
+        cam.transform.position = new Vector3(PlayerMovement.playerRoomPosition.x * 20, PlayerMovement.playerRoomPosition.y * 15);
+        /*switch (args.Direction)
         {
             case "TopDoor":
-                cam.transform.position += new Vector3(0, 15);
+                cam.transform.position = new Vector3(PlayerMovement.playerRoomPosition.x, PlayerMovement.playerRoomPosition.y * 15);
                 break;
             case "RightDoor":
-                cam.transform.position += new Vector3(20, 0);
+                cam.transform.position = new Vector3(PlayerMovement.playerRoomPosition.x * 20, PlayerMovement.playerRoomPosition.y);
                 break;
             case "BottomDoor":
-                cam.transform.position -= new Vector3(0, 15);
+                cam.transform.position = new Vector3(PlayerMovement.playerRoomPosition.x, PlayerMovement.playerRoomPosition.y * -15);
                 break;
             case "LeftDoor":
-                cam.transform.position -= new Vector3(20, 0);
+                cam.transform.position = new Vector3(PlayerMovement.playerRoomPosition.x * -20, PlayerMovement.playerRoomPosition.y);
                 break;
             default:
                 return;
-        }
+        }*/
     }
 }

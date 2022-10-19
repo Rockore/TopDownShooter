@@ -32,7 +32,6 @@ public class GunShooting : MonoBehaviour
                 Rigidbody2D bulletRd = bullet.GetComponent<Rigidbody2D>();
                 bulletRd.AddForce(firePoint.right * gunData.projectileSpeed, ForceMode2D.Impulse);
                 timer = 0;
-                Destroy(bullet, 5);
             }   
         }
     }

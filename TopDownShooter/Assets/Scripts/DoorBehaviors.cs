@@ -15,7 +15,6 @@ public class DoorBehaviors : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.name + " collided with " + this.gameObject.tag);
         if (collision.gameObject.tag == "PlayerBody")
         {
             GoThroughDoor(this.gameObject.tag);

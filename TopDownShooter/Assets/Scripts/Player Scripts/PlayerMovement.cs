@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
     bool isCharacterFlipped;
 
+    public static Vector2 playerRoomPosition;
+
     private void Start()
     {
         cameraHeight = Camera.main.orthographicSize;
@@ -71,19 +73,25 @@ public class PlayerMovement : MonoBehaviour
         switch (args.Direction)
         {
             case "TopDoor":
-                this.gameObject.transform.position += new Vector3(0, 9);
+                playerRoomPosition.y += 1;
                 break;
+
             case "RightDoor":
-                this.gameObject.transform.position += new Vector3(6, 0);
+                playerRoomPosition.x += 1;
                 break;
+
             case "BottomDoor":
-                this.gameObject.transform.position += new Vector3(0, -9);
+                playerRoomPosition.y -= 1;
                 break;
+
             case "LeftDoor":
-                this.gameObject.transform.position += new Vector3(-6, 0);
+                playerRoomPosition.x -= 1;
                 break;
+
             default:
                 return;
         }
+        Debug.Log(playerRoomPosition);
+        this.gameObject.transform.position = new Vector3(playerRoomPosition.x * 20, playerRoomPosition.y * 15);
     }
 }

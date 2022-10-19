@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 1911
   damage: 1
-  projectileSpeed: 1
+  projectileSpeed: 3
   currentAmmo: 7
   magSize: 7
   fireRate: 120

@@ -1,2 +1,9 @@
-Generate Rooms - generate a map for random rooms using 2d arrays
-Place Rooms- place correct rooms based off neighbors
+Generate Rooms - generate a map for random rooms using 2d arrays (Done)
+
+Place Rooms - place correct rooms based off neighbors (Done)
+
+Create Enemies - create enemies using a class, find way to give each enemy unique AI without need individual scripts
+
+Create Bosses - create bosses using a class, find way to give each boss unique AI without need individual scripts
+
+Disable Rooms - if not in room disable it and make it know which room the player is in
