@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

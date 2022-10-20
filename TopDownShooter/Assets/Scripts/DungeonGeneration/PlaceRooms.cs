@@ -5,18 +5,37 @@ using UnityEngine;
 public class PlaceRooms : MonoBehaviour
 {
     //2D array of rooms
-    Room[,] rooms;
+    private Room[,] rooms;
 
     //List of taken positions
-    List<Vector2> takenPositions = new List<Vector2>();
+    private List<Vector2> takenPositions = new List<Vector2>();
 
     //The grid size
-    public int gridSizeX, gridSizeY;
+    private int gridSizeX, gridSizeY;
 
     //Number of rooms allowed to be created
-    public int numberOfRooms;
+    private int numberOfRooms;
 
-    RoomTemplates _RoomTemplates;
+    private RoomTemplates _RoomTemplates;
+
+    public void CreateFloor()
+    {
+        //Creates an array of Rooms for current floor
+        rooms = new Room[gridSizeX * 2, gridSizeY * 2];
+
+        //Sets spawning room in the mid of the grid
+        rooms[gridSizeX, gridSizeY] = new Room(Vector2.zero, 0);
+        takenPositions.Add(Vector2.zero);
+
+        RandomRoomPlacement();
+    }
+
+    public void ResetFloor()
+    {
+        ClearFloor();
+        new WaitForEndOfFrame();
+        CreateFloor();
+    }
 
     private void Start()
     {
@@ -38,18 +57,6 @@ public class PlaceRooms : MonoBehaviour
         {
             CreateFloor();
         }
-    }
-
-    public void CreateFloor()
-    {
-        //Creates an array of Rooms for current floor
-        rooms = new Room[gridSizeX * 2, gridSizeY * 2];
-
-        //Sets spawning room in the mid of the grid
-        rooms[gridSizeX, gridSizeY] = new Room(Vector2.zero, 0);
-        takenPositions.Add(Vector2.zero);
-
-        RandomRoomPlacement();
     }
 
     private void ClearFloor()
@@ -75,13 +82,6 @@ public class PlaceRooms : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void ResetFloor()
-    {
-        ClearFloor();
-        new WaitForEndOfFrame();
-        CreateFloor();
     }
 
     private void RandomRoomPlacement()

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Abios : Enemy
 {
-    Rigidbody2D enemyRB;
-    void Start()
+    private Rigidbody2D enemyRB;
+
+    private void Start()
     {
         health = 10;
         movementSpeed = 2f;
@@ -13,7 +14,7 @@ public class Abios : Enemy
         enemyRB.gravityScale = 0;
     }
 
-    void Update()
+    private void Update()
     {
         GoTowardsPlayer();
     }

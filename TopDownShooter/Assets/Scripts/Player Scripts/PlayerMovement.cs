@@ -5,13 +5,12 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float currentMovementSpeed = 0.05f;
-    float sprintMovementSpeed = 0.1f;
-    float normalMovementSpeed = 0.05f;
-    float cameraHeight;
-    float cameraWidth;
-
-    bool isCharacterFlipped;
+    private float currentMovementSpeed = 0.05f;
+    private float sprintMovementSpeed = 0.1f;
+    private float normalMovementSpeed = 0.05f;
+    private float cameraHeight;
+    private float cameraWidth;
+    private bool isCharacterFlipped;
 
     public static Vector2 playerRoomPosition;
 
@@ -23,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
         DoorBehaviors.GoThroughDoorEvent += MovePlayerRooms;
     }
 
-    void FixedUpdate()
+    private void Update()
     {
         Sprint();
         Movement();
@@ -68,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         currentMovementSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintMovementSpeed : normalMovementSpeed;
     }
 
-    public void MovePlayerRooms(object source, GoThroughDoorArgs args)
+    private void MovePlayerRooms(object source, GoThroughDoorArgs args)
     {
         switch (args.Direction)
         {
@@ -91,7 +90,6 @@ public class PlayerMovement : MonoBehaviour
             default:
                 return;
         }
-        Debug.Log(playerRoomPosition);
         this.gameObject.transform.position = new Vector3(playerRoomPosition.x * 20, playerRoomPosition.y * 15);
     }
 }

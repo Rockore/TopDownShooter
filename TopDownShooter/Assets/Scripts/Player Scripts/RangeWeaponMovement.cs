@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RangeWeaponMovement : MonoBehaviour
 {
-    bool spriteFlipped = false;
+    private bool spriteFlipped = false;
 
     void Update()
     {
@@ -17,8 +17,8 @@ public class RangeWeaponMovement : MonoBehaviour
     {
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         difference.Normalize();
-        float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg - 90f;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotationZ + 90);
+        float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
     }
 
     private void FlipSprite()

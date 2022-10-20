@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CameraBehavior : MonoBehaviour
 {
-    Camera cam;
+    private Camera cam;
 
-    void Start()
+    private void Start()
     {
         cam = GetComponent<Camera>();
         DoorBehaviors.GoThroughDoorEvent += ClampToRoom;
     }
 
-    void Update()
+    private void Update()
     {
         
     }

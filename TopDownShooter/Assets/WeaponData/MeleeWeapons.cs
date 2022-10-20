@@ -6,15 +6,24 @@ public class MeleeWeapons : MonoBehaviour
 {
     public float damage;
     public float knockback;
-    public float swingRate;
+    public float swingDelay;
 
-    private void Update()
+    Animator animator;
+    private bool swingDelayed;
+    
+    public void Swing(float delay)
     {
-
+        animator = GetComponentInParent<Animator>();
+        if (swingDelayed)
+            return;
+        animator.SetTrigger("Attack");
+        swingDelayed = true;
+        StartCoroutine(DelaySwing(delay));
     }
 
-    public void SwingWeapon()
+    private IEnumerator DelaySwing(float delay)
     {
-
+        yield return new WaitForSeconds(delay);
+        swingDelayed = false;
     }
 }

@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class MeleeWeaponMovement : MonoBehaviour
 {
-    bool spriteFlipped = false;
-    public Transform shoulder;
-    public float armLength = 1f;
+    private bool spriteFlipped = false;
+    private Transform shoulder;
+
+    public float armLength = 1f; //Move this varible to MeleeWeapons
 
     void Start()
     {
         shoulder = transform.parent.GetChild(0).transform;
     }
+
     void Update()
     {
-        //FlipSprite();
-        OrbitPlayer();
         FollowMouse();
+        OrbitPlayer();
+        //FlipSprite();
     }
 
     private void FollowMouse()
@@ -24,7 +26,7 @@ public class MeleeWeaponMovement : MonoBehaviour
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         difference.Normalize();
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg - 90f;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
+        this.transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
     }
 
     private void OrbitPlayer()
@@ -42,6 +44,5 @@ public class MeleeWeaponMovement : MonoBehaviour
             transform.GetChild(0).localScale = new Vector3(transform.GetChild(0).localScale.x, -transform.GetChild(0).localScale.y);
             spriteFlipped = true;
         }
-        
     }
 }

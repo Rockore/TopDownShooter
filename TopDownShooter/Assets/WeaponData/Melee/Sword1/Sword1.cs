@@ -5,19 +5,18 @@ using UnityEngine;
 public class Sword1 : MeleeWeapons
 {
 
-    void Start()
+    private void Start()
     {
         damage = 1;
         knockback = 0.5f;
-        swingRate = 1;
+        swingDelay = 1;
     }
 
-    void Update()
+    private void Update()
     {
-        
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            SwingWeapon();
+            Swing(swingDelay);
         }
     }
 }

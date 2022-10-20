@@ -5,17 +5,17 @@ using UnityEngine;
 public class GunShooting : MonoBehaviour
 {
     [SerializeField] GunData gunData;
-    public Animator animator;
-    public Transform firePoint;
-    public GameObject bulletPrefab;
-    public float timer;
+    [SerializeField] Animator animator;
+    [SerializeField] Transform firePoint;
+    [SerializeField] GameObject bulletPrefab;
+    private float timer;
 
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
         timer += Time.deltaTime;
         ShootGun();

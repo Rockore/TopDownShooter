@@ -9,3 +9,5 @@ Create Bosses - create bosses using a class, find way to give each boss unique A
 Disable Rooms - if not in room disable it and make it know which room the player is in
 
 Weapon Attack - add an animation for melee attack and add hit box and damaage system
+
+Change Range Weapons - change ranged weapons to be made like melee weapons are

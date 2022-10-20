@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Orc : Enemy
 {
-    Rigidbody2D enemyRB;
-    void Start()
+    private Rigidbody2D enemyRB;
+    private void Start()
     {
         health = 15;
         movementSpeed = 1f;
@@ -13,7 +13,7 @@ public class Orc : Enemy
         enemyRB.gravityScale = 0;
     }
 
-    void Update()
+    private void Update()
     {
         GoTowardsPlayer();
     }
