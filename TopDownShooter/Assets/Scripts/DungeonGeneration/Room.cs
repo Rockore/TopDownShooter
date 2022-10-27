@@ -7,9 +7,10 @@ public class Room
 	#nullable enable
 	public Vector2 gridPos;
 	public int? type;
-	public bool? doorTop, doorBottom, doorLeft, doorRight;
 	public int? doorValue;
-	public GameObject? sprite;
+	public GameObject? walls;
+	public GameObject? floor;
+	public GameObject? doors;
 	public GameObject? typeSprite;
 
 	public Room(Vector2 _gridPos, int _type)
