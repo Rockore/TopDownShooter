@@ -615,27 +615,30 @@ MonoBehaviour:
   - {fileID: 6490687122533348508, guid: 934b2f437a06d114f83477b494521484, type: 3}
   walls:
   - {fileID: 6777423667839040297, guid: f0e21abc6aa26be42bb922ea92eb03e9, type: 3}
-  doors:
-  - {fileID: 5841681009101290442, guid: 4db7a7d3290a6404dbafc31ec96c5451, type: 3}
-  - {fileID: 837747760823635799, guid: afe3ee4bf6bb4d045906b1ec9c6c22d7, type: 3}
-  - {fileID: 2145483008097806317, guid: 0f0e0533da966594fac5512672d934f4, type: 3}
-  - {fileID: 1698157132507907755, guid: 48096cf2290d7a04f94e3d35b3de908b, type: 3}
-  - {fileID: 3488904136282890250, guid: ad69daa805667af42b214f6f1bdfa826, type: 3}
-  - {fileID: 3668260672646136505, guid: 4a78928f7d567c64bb8f938a756e0557, type: 3}
-  - {fileID: 8090407686473243106, guid: e7c0d884b3fbb5a4dbb148387a8490db, type: 3}
-  - {fileID: 4648988812285935097, guid: 8fabeb5210abd1d4495b0aa2fecfc4e2, type: 3}
-  - {fileID: 5046476570763770729, guid: 35f4625b890255a4dae96dd11a639023, type: 3}
-  - {fileID: 6133373273791150702, guid: df0f12bc8650eee48a16cfd7104bf8a6, type: 3}
-  - {fileID: 4571061998414775504, guid: be2ea10d939644144a376b9f6b17a00f, type: 3}
-  - {fileID: 6192961081908412040, guid: aaebf4e7af5357349a22cd23cf3ea4d2, type: 3}
-  - {fileID: 2322287554174690497, guid: 9cde49c5f8b7373478680b67006e9d95, type: 3}
-  - {fileID: 5138985321616983564, guid: aa96869c92cc4ff43965d6582c0cf978, type: 3}
-  - {fileID: 5431367950599924453, guid: f5e422185dd9df74381f7d00ab74e7e5, type: 3}
-  - {fileID: 311869767780633340, guid: 99b8b4c331c1e8546a87a41333ca0e34, type: 3}
-  - {fileID: 762731498763855431, guid: b152b8f64524dae48b154aebb71310e4, type: 3}
-  - {fileID: 3675613543905056464, guid: 77740c8fb9645fc43b38a9cf23df7fb2, type: 3}
+  topDoors:
   - {fileID: 3168130819325897339, guid: 36188bb5110d5a34aae3e8bc2cbd78a7, type: 3}
+  - {fileID: 3675613543905056464, guid: 77740c8fb9645fc43b38a9cf23df7fb2, type: 3}
+  - {fileID: 762731498763855431, guid: b152b8f64524dae48b154aebb71310e4, type: 3}
   - {fileID: 6676201559755749388, guid: d038b8dc054c94a4cbbcd19b69d5db44, type: 3}
+  - {fileID: 311869767780633340, guid: 99b8b4c331c1e8546a87a41333ca0e34, type: 3}
+  rightDoors:
+  - {fileID: 5138985321616983564, guid: aa96869c92cc4ff43965d6582c0cf978, type: 3}
+  - {fileID: 2322287554174690497, guid: 9cde49c5f8b7373478680b67006e9d95, type: 3}
+  - {fileID: 6192961081908412040, guid: aaebf4e7af5357349a22cd23cf3ea4d2, type: 3}
+  - {fileID: 5431367950599924453, guid: f5e422185dd9df74381f7d00ab74e7e5, type: 3}
+  - {fileID: 4571061998414775504, guid: be2ea10d939644144a376b9f6b17a00f, type: 3}
+  bottomDoors:
+  - {fileID: 1698157132507907755, guid: 48096cf2290d7a04f94e3d35b3de908b, type: 3}
+  - {fileID: 2145483008097806317, guid: 0f0e0533da966594fac5512672d934f4, type: 3}
+  - {fileID: 837747760823635799, guid: afe3ee4bf6bb4d045906b1ec9c6c22d7, type: 3}
+  - {fileID: 3488904136282890250, guid: ad69daa805667af42b214f6f1bdfa826, type: 3}
+  - {fileID: 5841681009101290442, guid: 4db7a7d3290a6404dbafc31ec96c5451, type: 3}
+  leftDoors:
+  - {fileID: 5046476570763770729, guid: 35f4625b890255a4dae96dd11a639023, type: 3}
+  - {fileID: 4648988812285935097, guid: 8fabeb5210abd1d4495b0aa2fecfc4e2, type: 3}
+  - {fileID: 8090407686473243106, guid: e7c0d884b3fbb5a4dbb148387a8490db, type: 3}
+  - {fileID: 6133373273791150702, guid: df0f12bc8650eee48a16cfd7104bf8a6, type: 3}
+  - {fileID: 3668260672646136505, guid: 4a78928f7d567c64bb8f938a756e0557, type: 3}
   roomTypeIcons:
   - {fileID: 3044986422097447603, guid: 67b790eb36ce6de43a54f26e0a9d3a3a, type: 3}
   - {fileID: 8471180809438576863, guid: 7dff312cc2ff67c4eb3524f8fe15f944, type: 3}
@@ -652,9 +655,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae9bbc2afa5e884bbb641fcc1664a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSizeX: 10
-  gridSizeY: 10
-  numberOfRooms: 10
+  getGridSizeX: 10
+  getGridSizeY: 10
+  numberOfRooms: 25
 --- !u!114 &533796994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,7 +683,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0546b44c3c179c459e5e09bbb32f6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _GenerateFloorLayout: {fileID: 533796993}
 --- !u!1 &1471012220
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,6 +842,5 @@ PrefabInstance:
       propertyPath: armLength
       value: 0.75
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5949864598049331211, guid: 17559b70c5f6a8c4dbde6b85210456b8, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17559b70c5f6a8c4dbde6b85210456b8, type: 3}

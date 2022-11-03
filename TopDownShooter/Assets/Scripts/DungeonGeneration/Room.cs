@@ -10,7 +10,10 @@ public class Room
 	public int? doorValue;
 	public GameObject? walls;
 	public GameObject? floor;
-	public GameObject? doors;
+	public GameObject? topDoor;
+	public GameObject? leftDoor;
+	public GameObject? bottomDoor;
+	public GameObject? rightDoor;
 	public GameObject? typeSprite;
 
 	public Room(Vector2 _gridPos, int _type)

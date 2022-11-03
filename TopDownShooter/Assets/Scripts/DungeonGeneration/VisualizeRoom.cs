@@ -4,36 +4,65 @@ using UnityEngine;
 
 public class VisualizeRoom : MonoBehaviour
 {
-    [SerializeField] GenerateFloorLayout _GenerateFloorLayout;
-    private GameObject previousFloor;
-    private GameObject previousWalls;
-    private GameObject previousDoors;
-    private GameObject currentFloor;
-    private GameObject currentWalls;
-    private GameObject currentDoors;
+    private Vector3 roomPosition;
+    private Vector3 previousRoomPosition;
 
     private void Start()
     {
-        DoorBehaviors.GoThroughDoorEvent += VisualizeCurrentRoom;
-        VisualizeCurrentRoom(null, null);
+        VisualizeStartingRoom();
+    }
+
+    private void VisualizeStartingRoom()
+    {
+        roomPosition = new Vector3(PlayerMovement.playerRoomPosition.x * 20 + GenerateFloorLayout.gridSizeX, PlayerMovement.playerRoomPosition.y * 15 + GenerateFloorLayout.gridSizeY);
+        GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].floor.SetActive(true);
+        GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].walls.SetActive(true);
+        if(GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].topDoor)
+            GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].topDoor.SetActive(true);
+        if (GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].rightDoor)
+            GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].rightDoor.SetActive(true);
+        if (GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].bottomDoor)
+            GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].bottomDoor.SetActive(true);
+        if (GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].leftDoor)
+            GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].leftDoor.SetActive(true);
+        previousRoomPosition = roomPosition;
     }
 
     private void VisualizeCurrentRoom(object source, GoThroughDoorArgs args)
     {
-        currentFloor = Instantiate(_GenerateFloorLayout.Rooms[(int)PlayerMovement.playerRoomPosition.x, (int)PlayerMovement.playerRoomPosition.y].floor);
-        currentWalls = Instantiate(_GenerateFloorLayout.Rooms[(int)PlayerMovement.playerRoomPosition.x, (int)PlayerMovement.playerRoomPosition.y].walls);
-        currentDoors = Instantiate(_GenerateFloorLayout.Rooms[(int)PlayerMovement.playerRoomPosition.x, (int)PlayerMovement.playerRoomPosition.y].doors);
+        roomPosition = new Vector3(PlayerMovement.playerRoomPosition.x * 20 + GenerateFloorLayout.gridSizeX, PlayerMovement.playerRoomPosition.y * 15 + GenerateFloorLayout.gridSizeY);
+        GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].floor.SetActive(true);
+        GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].walls.SetActive(true);
+        if (GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].topDoor)
+            GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].topDoor.SetActive(true);
+        if (GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].rightDoor)
+            GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].rightDoor.SetActive(true);
+        if (GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].bottomDoor)
+            GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].bottomDoor.SetActive(true);
+        if (GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].leftDoor)
+            GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].leftDoor.SetActive(true);
         UnvisualizePreviousRoom();
+        previousRoomPosition = roomPosition;
     }
 
     private void UnvisualizePreviousRoom()
     {
-        if(previousFloor == null && previousWalls == null && previousDoors == null)
+        if(previousRoomPosition == null)
         {
             return;
         }
-        Destroy(previousFloor);
-        Destroy(previousWalls);
-        Destroy(previousDoors);
+        else
+        {
+            GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].floor.SetActive(false);
+            GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].walls.SetActive(false);
+            if (GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].topDoor)
+                GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].topDoor.SetActive(false);
+            if (GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].rightDoor)
+                GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].rightDoor.SetActive(false);
+            if (GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].bottomDoor)
+                GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].bottomDoor.SetActive(false);
+            if (GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].leftDoor)
+                GenerateFloorLayout.rooms[(int)roomPosition.x, (int)roomPosition.y].leftDoor.SetActive(false);
+        }
     }
 }

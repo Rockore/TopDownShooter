@@ -11,3 +11,5 @@ Disable Rooms - if not in room disable it and make it know which room the player
 Weapon Attack - add an animation for melee attack and add hit box and damaage system
 
 Change Range Weapons - change ranged weapons to be made like melee weapons are
+
+MAKE DOORS SPAWN IN THE CORRECT SPOTS AND FIX HOLES IN WALLS
