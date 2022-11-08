@@ -5,9 +5,9 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float currentMovementSpeed = 2.5f;
-    private float sprintMovementSpeed = 4f;
-    private float normalMovementSpeed = 2.5f;
+    private float currentMovementSpeed = 0.05f;
+    private float sprintMovementSpeed = 0.1f;
+    private float normalMovementSpeed = 0.05f;
     private float cameraHeight;
     private float cameraWidth;
     private bool isCharacterFlipped;
@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     {
         cameraHeight = Camera.main.orthographicSize;
         cameraWidth = cameraHeight * Camera.main.aspect;
-        playerRoomPosition = new Vector2(GenerateFloorLayout.gridSizeX, GenerateFloorLayout.gridSizeY);
 
         DoorBehaviors.GoThroughDoorEvent += MovePlayerRooms;
     }
@@ -33,23 +32,23 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            this.gameObject.transform.position += new Vector3(0, currentMovementSpeed, 0) * Time.deltaTime;
+            this.gameObject.transform.position += new Vector3(0, currentMovementSpeed, 0);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            this.gameObject.transform.position += new Vector3(-currentMovementSpeed, 0, 0) * Time.deltaTime;
+            this.gameObject.transform.position += new Vector3(-currentMovementSpeed, 0, 0);
             isCharacterFlipped = true;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            this.gameObject.transform.position += new Vector3(0, -currentMovementSpeed, 0) * Time.deltaTime;
+            this.gameObject.transform.position += new Vector3(0, -currentMovementSpeed, 0);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            this.gameObject.transform.position += new Vector3(currentMovementSpeed, 0, 0) * Time.deltaTime;
+            this.gameObject.transform.position += new Vector3(currentMovementSpeed, 0, 0);
             isCharacterFlipped = false;
         }
 
@@ -91,6 +90,6 @@ public class PlayerMovement : MonoBehaviour
             default:
                 return;
         }
-        this.gameObject.transform.position = new Vector3(playerRoomPosition.x * 25, playerRoomPosition.y * 15);
+        this.gameObject.transform.position = new Vector3(playerRoomPosition.x * 20, playerRoomPosition.y * 15);
     }
 }

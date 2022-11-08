@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1127386164860282818}
   - component: {fileID: 7457440205611505600}
+  - component: {fileID: 5949864598049331211}
   m_Layer: 0
   m_Name: Sword1
   m_TagString: Untagged
@@ -45,7 +46,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608ad06530818c046b72f2f02aa235ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shoulder: {fileID: 0}
   armLength: 0.75
+--- !u!95 &5949864598049331211
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127386164860282819}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0cb1a7c4959711419462af4ea763c96, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8874229389986354891
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,4 +167,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   knockback: 0
-  swingDelay: 0
+  swingRate: 0

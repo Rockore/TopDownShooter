@@ -19,6 +19,6 @@ public class CameraBehavior : MonoBehaviour
 
     private void ClampToRoom(object source, GoThroughDoorArgs args)
     {
-        cam.transform.position = new Vector3(PlayerMovement.playerRoomPosition.x * 25, PlayerMovement.playerRoomPosition.y * 15, -10);
+        cam.transform.position = new Vector3(PlayerMovement.playerRoomPosition.x * 20, PlayerMovement.playerRoomPosition.y * 15, -10);
     }
 }

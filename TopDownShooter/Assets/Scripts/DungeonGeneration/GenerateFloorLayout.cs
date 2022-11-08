@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class GenerateFloorLayout : MonoBehaviour
 {
-    public static Room[,] rooms;
+    private Room[,] rooms { get; set; }
     private List<Vector2> takenPositions = new List<Vector2>();
-    private List<Room> viableRooms = new List<Room>();
-    public static int gridSizeX, gridSizeY;
-    public int getGridSizeX, getGridSizeY;
+    public int gridSizeX, gridSizeY;
     public int numberOfRooms;
-    private int numberOfSpecialRooms;
     private RoomTemplates _RoomTemplates;
     private CreateRooms _CreateRooms;
 
@@ -18,8 +15,6 @@ public class GenerateFloorLayout : MonoBehaviour
     {
         _RoomTemplates = GetComponent<RoomTemplates>();
         _CreateRooms = GetComponent<CreateRooms>();
-        gridSizeX = getGridSizeX;
-        gridSizeY = getGridSizeY;
         Debug.Log("Start");
         CreateFloorLayout();
     }
@@ -46,7 +41,7 @@ public class GenerateFloorLayout : MonoBehaviour
         new WaitForEndOfFrame();
         CreateFloorLayout();
     }
-    
+
     private void ClearFloor()
     {
         takenPositions.Clear();
@@ -59,10 +54,7 @@ public class GenerateFloorLayout : MonoBehaviour
                     rooms[i, e].type = null;
                     rooms[i, e].floor = null;
                     rooms[i, e].walls = null;
-                    rooms[i, e].topDoor = null;
-                    rooms[i, e].rightDoor = null;
-                    rooms[i, e].bottomDoor = null;
-                    rooms[i, e].leftDoor = null;
+                    rooms[i, e].doors = null;
                     rooms[i, e].doorValue = null;
                     rooms[i, e].gridPos = Vector2.zero;
                     Destroy(rooms[i, e].typeSprite);
@@ -111,18 +103,18 @@ public class GenerateFloorLayout : MonoBehaviour
         rooms = new Room[gridSizeX * 2, gridSizeY * 2];
         rooms[gridSizeX, gridSizeY] = new Room(Vector2.zero, 0);
         takenPositions.Add(Vector2.zero);
+        Debug.Log("Created Floor Layout");
         RandomRoomPlacement();
     }
 
     private void RandomRoomPlacement()
     {
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Make room gene more branched out~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
         int randomDirection;
         bool roomPlaced;
         Vector2 takenPosition;
         Vector2 newPosition;
 
-        for (int i = 0; i < numberOfRooms - numberOfSpecialRooms; i++)
+        for (int i = 0; i < numberOfRooms; i++)
         {
             roomPlaced = false;
             while (roomPlaced == false)
@@ -173,49 +165,7 @@ public class GenerateFloorLayout : MonoBehaviour
                 }
             }
         }
-
-        for (int i = 0; i < numberOfSpecialRooms; i++)
-        {
-            roomPlaced = false;
-            while (roomPlaced == false)
-            {
-                takenPosition = takenPositions[Random.Range(0, takenPositions.Count)];
-                randomDirection = Random.Range(0, 4);
-                if (CheckNeighbors(rooms[(int)takenPosition.x + gridSizeX, (int)takenPosition.y + gridSizeY]) == 1)
-                {
-
-                }
-
-                switch (randomDirection)
-                {
-                    case 0: //Up
-                        newPosition = new Vector2(takenPosition.x, takenPosition.y + 1);
-                        break;
-                    case 1: //Right
-                        newPosition = new Vector2(takenPosition.x + 1, takenPosition.y);
-                        break;
-                    case 2: //Bottom
-                        newPosition = new Vector2(takenPosition.x, takenPosition.y - 1);
-                        break;
-                    case 3: //Left
-                        newPosition = new Vector2(takenPosition.x - 1, takenPosition.y);
-                        break;
-                    default: //Defaults to up
-                        newPosition = new Vector2(takenPosition.x, takenPosition.y + 1);
-                        break;
-                }
-
-                if (Mathf.Abs(newPosition.x) <= gridSizeX && Mathf.Abs(newPosition.y) <= gridSizeY)
-                {
-                    if (rooms[(int)newPosition.x + gridSizeX, (int)newPosition.y + gridSizeY] == null)
-                    {
-                        rooms[(int)newPosition.x + gridSizeX, (int)newPosition.y + gridSizeY] = new Room(newPosition, 0);
-                        takenPositions.Add(newPosition);
-                        roomPlaced = true;
-                    }
-                }
-            }
-        }
+        Debug.Log("Random Placed Rooms");
         GiveDoorValue();
     }
 
@@ -278,7 +228,7 @@ public class GenerateFloorLayout : MonoBehaviour
                 }
             }
         }
-        //Debug.Log("Gave Rooms values");
+        Debug.Log("Gave Rooms values");
         GiveRoomsType();
     }
 
@@ -286,11 +236,29 @@ public class GenerateFloorLayout : MonoBehaviour
     {
         bool lootRoomSpawned = false;
         bool bossRoomSpawned = false;
-        bool shopRoomSpawned = false;
-        bool blackRoomSpawned = false;
+        List<Room> viableRooms = new List<Room>();
 
+        for (int i = 0; i < rooms.GetLength(0); i++)
+        {
+            for (int e = 0; e < rooms.GetLength(1); e++)
+            {
+                if (rooms[i, e] != null && rooms[i, e].doorValue != null)
+                {
+                    if (rooms[i, e].doorValue == 1 || rooms[i, e].doorValue == 2 || rooms[i, e].doorValue == 4 || rooms[i, e].doorValue == 8)
+                    {
+                        viableRooms.Add(rooms[i, e]);
+                    }
+                }
+            }
+        }
 
-        while (lootRoomSpawned == false || bossRoomSpawned == false || shopRoomSpawned == false || blackRoomSpawned == false)
+        if(viableRooms.Count <= 1)
+        {
+            ResetFloor();
+            return;
+        }
+
+        while (lootRoomSpawned == false || bossRoomSpawned == false)
         {
             Room room = viableRooms[Random.Range(0, viableRooms.Count)];
 
@@ -305,40 +273,9 @@ public class GenerateFloorLayout : MonoBehaviour
                 rooms[(int)room.gridPos.x + gridSizeX, (int)room.gridPos.y + gridSizeY].type = 2;
                 bossRoomSpawned = true;
             }
-
-            else if (shopRoomSpawned == false && room.type == 0)
-            {
-                rooms[(int)room.gridPos.x + gridSizeX, (int)room.gridPos.y + gridSizeY].type = 3;
-                bossRoomSpawned = true;
-            }
-
-            else if (lootRoomSpawned == true && bossRoomSpawned == true && shopRoomSpawned == true && blackRoomSpawned == false && room.type == 0)
-            {
-                rooms[(int)room.gridPos.x + gridSizeX, (int)room.gridPos.y + gridSizeY].type = 4;
-                bossRoomSpawned = true;
-            }
         }
-        //Debug.Log("Gave Rooms types");
+        Debug.Log("Gave Rooms types");
         AssignRooms();
-    }
-
-    private int CheckViableSpecialRooms()
-    {
-        viableRooms.Clear();
-        for (int i = 0; i < rooms.GetLength(0); i++)
-        {
-            for (int e = 0; e < rooms.GetLength(1); e++)
-            {
-                if (rooms[i, e] != null && rooms[i, e].doorValue != null)
-                {
-                    if (rooms[i, e].doorValue == 1 || rooms[i, e].doorValue == 2 || rooms[i, e].doorValue == 4 || rooms[i, e].doorValue == 8)
-                    {
-                        viableRooms.Add(rooms[i, e]);
-                    }
-                }
-            }
-        }
-        return viableRooms.Count;
     }
 
     private void AssignRooms()
@@ -349,9 +286,13 @@ public class GenerateFloorLayout : MonoBehaviour
             {
                 if (rooms[i, e] != null && rooms[i, e].doorValue != null)
                 {
+                    Debug.Log(rooms[i, e].floor);
                     rooms[i, e] = _CreateRooms.CreateRoom(rooms[i, e]);
                 }
             }
         }
+        Debug.Log("Assigned Rooms");
     }
+
+    public Room[,] Rooms { get; set; }
 }
