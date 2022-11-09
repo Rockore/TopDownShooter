@@ -5,9 +5,15 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
+<<<<<<< Updated upstream
     private float currentMovementSpeed = 0.05f;
     private float sprintMovementSpeed = 0.1f;
     private float normalMovementSpeed = 0.05f;
+=======
+    private float currentMovementSpeed = 5f;
+    private float sprintMovementSpeed = 10f;
+    private float normalMovementSpeed = 5f;
+>>>>>>> Stashed changes
     private float cameraHeight;
     private float cameraWidth;
     private bool isCharacterFlipped;
@@ -90,6 +96,10 @@ public class PlayerMovement : MonoBehaviour
             default:
                 return;
         }
+<<<<<<< Updated upstream
         this.gameObject.transform.position = new Vector3(playerRoomPosition.x * 20, playerRoomPosition.y * 15);
+=======
+        this.gameObject.transform.position = new Vector3(playerRoomPosition.x * 25, playerRoomPosition.y * 20);
+>>>>>>> Stashed changes
     }
 }

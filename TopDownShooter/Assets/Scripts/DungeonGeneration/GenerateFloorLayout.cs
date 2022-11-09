@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class GenerateFloorLayout : MonoBehaviour
 {
+<<<<<<< Updated upstream
     private Room[,] rooms { get; set; }
     private List<Vector2> takenPositions = new List<Vector2>();
     public int gridSizeX, gridSizeY;
+=======
+    public static Room[,] rooms { get; set; }
+    private List<Vector2> takenPositions = new List<Vector2>();
+    public static int gridSizeX, gridSizeY;
+>>>>>>> Stashed changes
     public int numberOfRooms;
     private RoomTemplates _RoomTemplates;
     private CreateRooms _CreateRooms;
 
     private void Start()
     {
+        gridSizeX = 10;
+        gridSizeY = 10;
         _RoomTemplates = GetComponent<RoomTemplates>();
         _CreateRooms = GetComponent<CreateRooms>();
         Debug.Log("Start");
