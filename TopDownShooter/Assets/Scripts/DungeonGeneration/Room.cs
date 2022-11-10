@@ -10,14 +10,10 @@ public class Room
 	public int? doorValue;
 	public GameObject? walls;
 	public GameObject? floor;
-<<<<<<< Updated upstream
-	public GameObject? doors;
-=======
 	public GameObject? topDoor;
 	public GameObject? rightDoor;
 	public GameObject? bottomDoor;
 	public GameObject? leftDoor;
->>>>>>> Stashed changes
 	public GameObject? typeSprite;
 
 	public Room(Vector2 _gridPos, int _type)

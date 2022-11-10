@@ -4,25 +4,12 @@ using UnityEngine;
 
 public class VisualizeRoom : MonoBehaviour
 {
-<<<<<<< Updated upstream
-    [SerializeField] GenerateFloorLayout _GenerateFloorLayout;
-    private GameObject previousFloor;
-    private GameObject previousWalls;
-    private GameObject previousDoors;
-    private GameObject currentFloor;
-    private GameObject currentWalls;
-    private GameObject currentDoors;
-=======
     Vector2 currentRoomPosition;
     Vector2 previousRoomPosition;
->>>>>>> Stashed changes
 
     private void Start()
     {
         DoorBehaviors.GoThroughDoorEvent += VisualizeCurrentRoom;
-<<<<<<< Updated upstream
-        VisualizeCurrentRoom(null, null);
-=======
         VisualizeStartingRoom(null, null);
     }
 
@@ -40,17 +27,10 @@ public class VisualizeRoom : MonoBehaviour
         if (GenerateFloorLayout.rooms[(int)PlayerMovement.playerRoomPosition.x + GenerateFloorLayout.gridSizeX, (int)PlayerMovement.playerRoomPosition.y + GenerateFloorLayout.gridSizeY].leftDoor)
             GenerateFloorLayout.rooms[(int)PlayerMovement.playerRoomPosition.x + GenerateFloorLayout.gridSizeX, (int)PlayerMovement.playerRoomPosition.y + GenerateFloorLayout.gridSizeY].leftDoor.SetActive(true);
         previousRoomPosition = currentRoomPosition;
->>>>>>> Stashed changes
     }
 
     private void VisualizeCurrentRoom(object source, GoThroughDoorArgs args)
     {
-<<<<<<< Updated upstream
-        currentFloor = Instantiate(_GenerateFloorLayout.Rooms[(int)PlayerMovement.playerRoomPosition.x, (int)PlayerMovement.playerRoomPosition.y].floor);
-        currentWalls = Instantiate(_GenerateFloorLayout.Rooms[(int)PlayerMovement.playerRoomPosition.x, (int)PlayerMovement.playerRoomPosition.y].walls);
-        currentDoors = Instantiate(_GenerateFloorLayout.Rooms[(int)PlayerMovement.playerRoomPosition.x, (int)PlayerMovement.playerRoomPosition.y].doors);
-        UnvisualizePreviousRoom();
-=======
         currentRoomPosition = new Vector2(PlayerMovement.playerRoomPosition.x + GenerateFloorLayout.gridSizeX, PlayerMovement.playerRoomPosition.y + GenerateFloorLayout.gridSizeY);
 
         GenerateFloorLayout.rooms[(int)PlayerMovement.playerRoomPosition.x + GenerateFloorLayout.gridSizeX, (int)PlayerMovement.playerRoomPosition.y + GenerateFloorLayout.gridSizeY].floor.SetActive(true);
@@ -65,20 +45,10 @@ public class VisualizeRoom : MonoBehaviour
             GenerateFloorLayout.rooms[(int)PlayerMovement.playerRoomPosition.x + GenerateFloorLayout.gridSizeX , (int)PlayerMovement.playerRoomPosition.y + GenerateFloorLayout.gridSizeY].leftDoor.SetActive(true);
         //UnvisualizePreviousRoom();
         previousRoomPosition = currentRoomPosition;
->>>>>>> Stashed changes
     }
 
     private void UnvisualizePreviousRoom()
     {
-        if(previousFloor == null && previousWalls == null && previousDoors == null)
-        {
-            return;
-        }
-<<<<<<< Updated upstream
-        Destroy(previousFloor);
-        Destroy(previousWalls);
-        Destroy(previousDoors);
-=======
         GenerateFloorLayout.rooms[(int)previousRoomPosition.x, (int)previousRoomPosition.y].floor.SetActive(false);
         GenerateFloorLayout.rooms[(int)previousRoomPosition.x, (int)previousRoomPosition.y].walls.SetActive(false);
         if (GenerateFloorLayout.rooms[(int)previousRoomPosition.x, (int)previousRoomPosition.y].topDoor != null)
@@ -89,6 +59,5 @@ public class VisualizeRoom : MonoBehaviour
             GenerateFloorLayout.rooms[(int)previousRoomPosition.x, (int)previousRoomPosition.y].bottomDoor.SetActive(false);
         if (GenerateFloorLayout.rooms[(int)previousRoomPosition.x, (int)previousRoomPosition.y].leftDoor != null)
             GenerateFloorLayout.rooms[(int)previousRoomPosition.x, (int)previousRoomPosition.y].leftDoor.SetActive(false);
->>>>>>> Stashed changes
     }
 }
