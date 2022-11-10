@@ -38,10 +38,89 @@ public class CreateRooms : MonoBehaviour
 
     private void PickDoors(Room room)
     {
-        room.topDoor = Instantiate(_RoomTemplates.topDoor[(int)room.type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
-        room.rightDoor = Instantiate(_RoomTemplates.rightDoor[(int)room.type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);  
-        room.bottomDoor = Instantiate(_RoomTemplates.bottomDoor[(int)room.type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
-        room.leftDoor = Instantiate(_RoomTemplates.leftDoor[(int)room.type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+        switch (room.doorValue)
+        {
+            //N/A
+            case 0:
+                break;
+            //T
+            case 1:
+                room.topDoor = Instantiate(_RoomTemplates.topDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY + 1].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                break;
+            //R
+            case 2:
+                room.rightDoor = Instantiate(_RoomTemplates.rightDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX + 1, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                break;
+            //TR
+            case 3:
+                room.topDoor = Instantiate(_RoomTemplates.topDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY + 1].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.rightDoor = Instantiate(_RoomTemplates.rightDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX + 1, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                break;
+            //B
+            case 4:
+                room.bottomDoor = Instantiate(_RoomTemplates.bottomDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY - 1].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                break;
+            //TB
+            case 5:
+                room.topDoor = Instantiate(_RoomTemplates.topDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY + 1].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.bottomDoor = Instantiate(_RoomTemplates.bottomDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY - 1].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                break;
+            //RB
+            case 6:
+                room.rightDoor = Instantiate(_RoomTemplates.rightDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX - 1, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.bottomDoor = Instantiate(_RoomTemplates.bottomDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY - 1].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                break;
+            //TRB
+            case 7:
+                room.topDoor = Instantiate(_RoomTemplates.topDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY + 1].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.rightDoor = Instantiate(_RoomTemplates.rightDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX + 1, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.bottomDoor = Instantiate(_RoomTemplates.bottomDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY - 1].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                break;
+            //L
+            case 8:
+                room.leftDoor = Instantiate(_RoomTemplates.leftDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX - 1, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                break;
+            //TL
+            case 9:
+                room.topDoor = Instantiate(_RoomTemplates.topDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY + 1].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.leftDoor = Instantiate(_RoomTemplates.leftDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX - 1, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                break;
+            //RL
+            case 10:
+                room.rightDoor = Instantiate(_RoomTemplates.rightDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX + 1, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.leftDoor = Instantiate(_RoomTemplates.leftDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX - 1, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                break;
+            //TRL
+            case 11:
+                room.topDoor = Instantiate(_RoomTemplates.topDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY + 1].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.rightDoor = Instantiate(_RoomTemplates.rightDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX + 1, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.leftDoor = Instantiate(_RoomTemplates.leftDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX - 1, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                break;
+            //BL
+            case 12:
+                room.bottomDoor = Instantiate(_RoomTemplates.bottomDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY - 1].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.leftDoor = Instantiate(_RoomTemplates.leftDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX - 1, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                break;
+            //TBL
+            case 13:
+                room.topDoor = Instantiate(_RoomTemplates.topDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY + 1].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.bottomDoor = Instantiate(_RoomTemplates.bottomDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY - 1].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.leftDoor = Instantiate(_RoomTemplates.leftDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX - 1, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                break;
+            //RBL
+            case 14:
+                room.rightDoor = Instantiate(_RoomTemplates.rightDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX + 1, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.bottomDoor = Instantiate(_RoomTemplates.bottomDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY - 1].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.leftDoor = Instantiate(_RoomTemplates.leftDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX - 1, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                break;
+            //TRBL
+            case 15:
+                room.topDoor = Instantiate(_RoomTemplates.topDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY + 1].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.rightDoor = Instantiate(_RoomTemplates.rightDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX + 1, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.bottomDoor = Instantiate(_RoomTemplates.bottomDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY - 1].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                room.leftDoor = Instantiate(_RoomTemplates.leftDoor[(int)GenerateFloorLayout.rooms[(int)room.gridPos.x + GenerateFloorLayout.gridSizeX - 1, (int)room.gridPos.y + GenerateFloorLayout.gridSizeY].type], roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+                break;
+        }
 
         //room.topDoor.SetActive(false);
         //room.rightDoor.SetActive(false);
