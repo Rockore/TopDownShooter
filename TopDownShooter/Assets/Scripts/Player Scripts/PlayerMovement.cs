@@ -73,23 +73,26 @@ public class PlayerMovement : MonoBehaviour
         {
             case "TopDoor":
                 playerRoomPosition.y += 1;
+                this.gameObject.transform.position += new Vector3(0, 13);
                 break;
 
             case "RightDoor":
                 playerRoomPosition.x += 1;
+                this.gameObject.transform.position += new Vector3(10, 0);
                 break;
 
             case "BottomDoor":
                 playerRoomPosition.y -= 1;
+                this.gameObject.transform.position -= new Vector3(0, 13);
                 break;
 
             case "LeftDoor":
                 playerRoomPosition.x -= 1;
+                this.gameObject.transform.position -= new Vector3(10, 0);
                 break;
 
             default:
                 return;
         }
-        this.gameObject.transform.position = new Vector3(playerRoomPosition.x * 25, playerRoomPosition.y * 20);
     }
 }

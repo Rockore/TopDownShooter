@@ -8,6 +8,7 @@ public class GenerateFloorLayout : MonoBehaviour
     private List<Vector2> takenPositions = new List<Vector2>();
     public static int gridSizeX, gridSizeY;
     public int numberOfRooms;
+    public int numberOfSpecialRooms = 4;
     private RoomTemplates _RoomTemplates;
     private CreateRooms _CreateRooms;
 
@@ -17,7 +18,6 @@ public class GenerateFloorLayout : MonoBehaviour
         gridSizeY = 10;
         _RoomTemplates = GetComponent<RoomTemplates>();
         _CreateRooms = GetComponent<CreateRooms>();
-        Debug.Log("Start");
         CreateFloorLayout();
     }
 
@@ -108,7 +108,6 @@ public class GenerateFloorLayout : MonoBehaviour
         rooms = new Room[gridSizeX * 2, gridSizeY * 2];
         rooms[gridSizeX, gridSizeY] = new Room(Vector2.zero, 0);
         takenPositions.Add(Vector2.zero);
-        Debug.Log("Created Floor Layout");
         RandomRoomPlacement();
     }
 
@@ -170,7 +169,6 @@ public class GenerateFloorLayout : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Random Placed Rooms");
         GiveDoorValue();
     }
 
@@ -233,7 +231,6 @@ public class GenerateFloorLayout : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Gave Rooms values");
         GiveRoomsType();
     }
 
@@ -241,6 +238,8 @@ public class GenerateFloorLayout : MonoBehaviour
     {
         bool lootRoomSpawned = false;
         bool bossRoomSpawned = false;
+        bool shopRoomSpawned = false;
+        bool blackRoomSpawned = false;
         List<Room> viableRooms = new List<Room>();
 
         for (int i = 0; i < rooms.GetLength(0); i++)
@@ -257,13 +256,20 @@ public class GenerateFloorLayout : MonoBehaviour
             }
         }
 
-        if(viableRooms.Count <= 1)
+        if (numberOfRooms <=  numberOfSpecialRooms)
+        {
+            numberOfRooms = numberOfSpecialRooms + 1;
+            ResetFloor();
+            return;
+        }
+
+        if (viableRooms.Count < 4)
         {
             ResetFloor();
             return;
         }
 
-        while (lootRoomSpawned == false || bossRoomSpawned == false)
+        while (lootRoomSpawned == false || bossRoomSpawned == false || shopRoomSpawned == false || blackRoomSpawned == false)
         {
             Room room = viableRooms[Random.Range(0, viableRooms.Count)];
 
@@ -278,8 +284,19 @@ public class GenerateFloorLayout : MonoBehaviour
                 rooms[(int)room.gridPos.x + gridSizeX, (int)room.gridPos.y + gridSizeY].type = 2;
                 bossRoomSpawned = true;
             }
+
+            else if (shopRoomSpawned == false && room.type == 0)
+            {
+                rooms[(int)room.gridPos.x + gridSizeX, (int)room.gridPos.y + gridSizeY].type = 3;
+                shopRoomSpawned = true;
+            }
+
+            else if (blackRoomSpawned == false && room.type == 0)
+            {
+                rooms[(int)room.gridPos.x + gridSizeX, (int)room.gridPos.y + gridSizeY].type = 4;
+                blackRoomSpawned = true;
+            }
         }
-        Debug.Log("Gave Rooms types");
         AssignRooms();
     }
 
@@ -295,7 +312,6 @@ public class GenerateFloorLayout : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Assigned Rooms");
     }
 
     public Room[,] Rooms { get; set; }

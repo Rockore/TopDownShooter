@@ -9,16 +9,68 @@ public class CameraBehavior : MonoBehaviour
     private void Start()
     {
         cam = GetComponent<Camera>();
-        DoorBehaviors.GoThroughDoorEvent += ClampToRoom;
+        DoorBehaviors.GoThroughDoorEvent += MoveCameraToRoom;
     }
 
-    private void Update()
+    private void MoveCameraToRoom(object source, GoThroughDoorArgs args)
     {
-        
+        switch (args.Direction)
+        {
+            case "TopDoor":
+
+                StartCoroutine(cameraUp());
+                break;
+
+            case "RightDoor":
+                StartCoroutine(cameraRight());
+                break;
+
+            case "BottomDoor":
+                StartCoroutine(cameraDown());
+                break;
+
+            case "LeftDoor":
+                StartCoroutine(cameraLeft());
+                break;
+
+            default:
+                return;
+        }
     }
 
-    private void ClampToRoom(object source, GoThroughDoorArgs args)
+    private IEnumerator cameraUp()
     {
-        cam.transform.position = new Vector3(PlayerMovement.playerRoomPosition.x * 25, PlayerMovement.playerRoomPosition.y * 20, -10);
+        for (int i = 0; i < 20; i++)
+        {
+            cam.transform.position += new Vector3(0, 1);
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+    }
+
+    private IEnumerator cameraRight()
+    {
+        for (int i = 0; i < 25; i++)
+        {
+            cam.transform.position += new Vector3(1, 0);
+            yield return new WaitForSecondsRealtime(0.0075f);
+        }
+    }
+
+    private IEnumerator cameraDown()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            cam.transform.position -= new Vector3(0, 1);
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+    }
+
+    private IEnumerator cameraLeft()
+    {
+        for (int i = 0; i < 25; i++)
+        {
+            cam.transform.position -= new Vector3(1, 0);
+            yield return new WaitForSecondsRealtime(0.0075f);
+        }
     }
 }

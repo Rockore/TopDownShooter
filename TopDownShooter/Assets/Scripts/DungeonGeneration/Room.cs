@@ -6,10 +6,12 @@ public class Room
 {
 	#nullable enable
 	public Vector2 gridPos;
+	public bool? isRoomCompleted;
 	public int? type;
 	public int? doorValue;
 	public GameObject? walls;
 	public GameObject? floor;
+	public GameObject? obstacles;
 	public GameObject? topDoor;
 	public GameObject? rightDoor;
 	public GameObject? bottomDoor;

@@ -17,6 +17,7 @@ public class DoorBehaviors : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerBody")
         {
+            OpenDoorAnimate();
             GoThroughDoor(this.gameObject.tag);
         }
     }
@@ -24,5 +25,10 @@ public class DoorBehaviors : MonoBehaviour
     public static void GoThroughDoor(string tag)
     {
         GoThroughDoorEvent?.Invoke(null, new GoThroughDoorArgs() { Direction = tag});
+    }
+
+    private void OpenDoorAnimate()
+    {
+
     }
 }

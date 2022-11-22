@@ -9,8 +9,8 @@ public class VisualizeRoom : MonoBehaviour
 
     private void Start()
     {
-        DoorBehaviors.GoThroughDoorEvent += VisualizeCurrentRoom;
-        VisualizeStartingRoom(null, null);
+        //DoorBehaviors.GoThroughDoorEvent += VisualizeCurrentRoom;
+        //VisualizeStartingRoom(null, null);
     }
 
     private void VisualizeStartingRoom(object source, GoThroughDoorArgs args)
