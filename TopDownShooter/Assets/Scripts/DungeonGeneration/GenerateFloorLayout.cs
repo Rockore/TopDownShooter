@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GenerateFloorLayout : MonoBehaviour
 {
-    public static Room[,] rooms { get; set; }
+    public static Room[,] rooms;
     private List<Vector2> takenPositions = new List<Vector2>();
     public static int gridSizeX, gridSizeY;
     public int numberOfRooms;
@@ -39,6 +39,7 @@ public class GenerateFloorLayout : MonoBehaviour
 
     public void ResetFloor()
     {
+        Debug.Log("Reset Floor");
         ClearFloor();
         new WaitForEndOfFrame();
         CreateFloorLayout();
@@ -51,19 +52,25 @@ public class GenerateFloorLayout : MonoBehaviour
         {
             for (int e = 0; e < rooms.GetLength(1); e++)
             {
-                if(rooms[i, e] != null)
+                if (rooms[i, e] != null)
                 {
                     rooms[i, e].type = null;
                     rooms[i, e].floor = null;
+                    Destroy(rooms[i, e].floor);
                     rooms[i, e].walls = null;
+                    Destroy(rooms[i, e].walls);
                     rooms[i, e].topDoor = null;
+                    Destroy(rooms[i, e].topDoor);
                     rooms[i, e].rightDoor = null;
+                    Destroy(rooms[i, e].rightDoor);
                     rooms[i, e].bottomDoor = null;
+                    Destroy(rooms[i, e].bottomDoor);
                     rooms[i, e].leftDoor = null;
+                    Destroy(rooms[i, e].leftDoor);
+                    rooms[i, e].obstacles = null;
+                    Destroy(rooms[i, e].obstacles);
                     rooms[i, e].doorValue = null;
                     rooms[i, e].gridPos = Vector2.zero;
-                    Destroy(rooms[i, e].typeSprite);
-                    rooms[i, e].typeSprite = null;
                 }
             }
         }
@@ -106,6 +113,8 @@ public class GenerateFloorLayout : MonoBehaviour
     private void CreateFloorLayout()
     {
         rooms = new Room[gridSizeX * 2, gridSizeY * 2];
+        Debug.Log("GridSize" + gridSizeX + "," + gridSizeY);
+        Debug.Log("RoomSize" + rooms.Length);
         rooms[gridSizeX, gridSizeY] = new Room(Vector2.zero, 0);
         takenPositions.Add(Vector2.zero);
         RandomRoomPlacement();
@@ -248,9 +257,13 @@ public class GenerateFloorLayout : MonoBehaviour
             {
                 if (rooms[i, e] != null && rooms[i, e].doorValue != null)
                 {
-                    if (rooms[i, e].doorValue == 1 || rooms[i, e].doorValue == 2 || rooms[i, e].doorValue == 4 || rooms[i, e].doorValue == 8)
+                    if (i != gridSizeX && e != gridSizeY)
                     {
-                        viableRooms.Add(rooms[i, e]);
+                        if (rooms[i, e].doorValue == 1 || rooms[i, e].doorValue == 2 || rooms[i, e].doorValue == 4 || rooms[i, e].doorValue == 8)
+                        {
+                            Debug.Log("Add Viable Room");
+                            viableRooms.Add(rooms[i, e]);
+                        }
                     }
                 }
             }

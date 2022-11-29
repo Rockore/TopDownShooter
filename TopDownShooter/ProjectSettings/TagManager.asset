@@ -16,6 +16,9 @@ TagManager:
   - RightDoor
   - Wall
   - Grid
+  - NormSpikes
+  - RedSpikes
+  - GoldSpikes
   layers:
   - Default
   - TransparentFX

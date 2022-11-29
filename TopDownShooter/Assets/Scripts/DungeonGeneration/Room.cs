@@ -16,7 +16,6 @@ public class Room
 	public GameObject? rightDoor;
 	public GameObject? bottomDoor;
 	public GameObject? leftDoor;
-	public GameObject? typeSprite;
 
 	public Room(Vector2 _gridPos, int _type)
 	{
