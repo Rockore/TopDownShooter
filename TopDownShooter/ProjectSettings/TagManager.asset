@@ -19,6 +19,9 @@ TagManager:
   - NormSpikes
   - RedSpikes
   - GoldSpikes
+  - HealthBar
+  - ActionBar
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

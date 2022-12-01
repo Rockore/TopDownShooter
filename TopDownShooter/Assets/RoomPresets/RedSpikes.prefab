@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5914885022439820945}
   m_Layer: 0
   m_Name: RedSpikes
-  m_TagString: Untagged
+  m_TagString: RedSpikes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

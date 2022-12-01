@@ -39,7 +39,6 @@ public class GenerateFloorLayout : MonoBehaviour
 
     public void ResetFloor()
     {
-        Debug.Log("Reset Floor");
         ClearFloor();
         new WaitForEndOfFrame();
         CreateFloorLayout();
@@ -113,8 +112,6 @@ public class GenerateFloorLayout : MonoBehaviour
     private void CreateFloorLayout()
     {
         rooms = new Room[gridSizeX * 2, gridSizeY * 2];
-        Debug.Log("GridSize" + gridSizeX + "," + gridSizeY);
-        Debug.Log("RoomSize" + rooms.Length);
         rooms[gridSizeX, gridSizeY] = new Room(Vector2.zero, 0);
         takenPositions.Add(Vector2.zero);
         RandomRoomPlacement();
@@ -261,7 +258,6 @@ public class GenerateFloorLayout : MonoBehaviour
                     {
                         if (rooms[i, e].doorValue == 1 || rooms[i, e].doorValue == 2 || rooms[i, e].doorValue == 4 || rooms[i, e].doorValue == 8)
                         {
-                            Debug.Log("Add Viable Room");
                             viableRooms.Add(rooms[i, e]);
                         }
                     }

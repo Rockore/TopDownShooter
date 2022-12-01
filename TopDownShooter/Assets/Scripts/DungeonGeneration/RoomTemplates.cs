@@ -29,6 +29,7 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] bottomDoor;
     public GameObject[] leftDoor;
 
+    public GameObject spawnRoomObstacle;
     public GameObject[] obstaclesDoorValue1;
     public GameObject[] obstaclesDoorValue2;
     public GameObject[] obstaclesDoorValue3;

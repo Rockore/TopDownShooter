@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2974629486973124256}
   m_Layer: 0
   m_Name: NormSpikes
-  m_TagString: Untagged
+  m_TagString: NormSpikes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

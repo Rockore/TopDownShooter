@@ -249,7 +249,12 @@ public class CreateRooms : MonoBehaviour
 
     private void PickObstacles(Room room)
     {
-        if(room.type == 0)
+        if(room.gridPos.x == 0 && room.gridPos.y == 0)
+        {
+            room.obstacles = Instantiate(_RoomTemplates.spawnRoomObstacle, roomPosition, Quaternion.identity, GameObject.FindGameObjectWithTag("Grid").transform);
+        }
+
+        else if(room.type == 0)
         {
             switch (room.doorValue)
             {
