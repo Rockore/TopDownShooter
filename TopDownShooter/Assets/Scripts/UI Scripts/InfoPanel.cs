@@ -8,7 +8,8 @@ public class InfoPanel : MonoBehaviour
     void Start()
     {
         isInfoPanelExtended = false;
-        UIManager.TabKeyPressedEvent += SlideInfoPanel;
+        
+        InputManager.InputTabEvent += SlideInfoPanel;
     }
 
     void Update()
@@ -16,7 +17,7 @@ public class InfoPanel : MonoBehaviour
         
     }
 
-    private void SlideInfoPanel(object source, TabKeyPressedArgs args)
+    private void SlideInfoPanel(object source, InputTabArgs args)
     {
         Debug.Log("SlideInfoPanel");
         if (isInfoPanelExtended == true) 

@@ -20,38 +20,41 @@ public class PlayerMovement : MonoBehaviour
         cameraWidth = cameraHeight * Camera.main.aspect;
 
         DoorBehaviors.GoThroughDoorEvent += MovePlayerRooms;
+
+        InputManager.InputWEvent += MoveUp;
+        InputManager.InputAEvent += MoveLeft;
+        InputManager.InputSEvent += MoveDown;
+        InputManager.InputDEvent += MoveRight;
     }
 
     private void Update()
     {
         Sprint();
-        Movement();
     }
 
-    private void Movement()
+    private void MoveUp(object source, InputWArgs args)
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            this.gameObject.transform.position += new Vector3(0, currentMovementSpeed, 0) * Time.deltaTime;
-        }
+        this.gameObject.transform.position += new Vector3(0, currentMovementSpeed, 0) * Time.deltaTime;
+    }
+    private void MoveLeft(object source, InputAArgs args)
+    {
+        this.gameObject.transform.position += new Vector3(-currentMovementSpeed, 0, 0) * Time.deltaTime;
+        isCharacterFlipped = true;
+        CharacterFlip();
+    }
+    private void MoveDown(object source, InputSArgs args)
+    {
+        this.gameObject.transform.position += new Vector3(0, -currentMovementSpeed, 0) * Time.deltaTime;
+    }
+    private void MoveRight(object source, InputDArgs args)
+    {
+        this.gameObject.transform.position += new Vector3(currentMovementSpeed, 0, 0) * Time.deltaTime;
+        isCharacterFlipped = false;
+        CharacterFlip();
+    }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            this.gameObject.transform.position += new Vector3(-currentMovementSpeed, 0, 0) * Time.deltaTime;
-            isCharacterFlipped = true;
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            this.gameObject.transform.position += new Vector3(0, -currentMovementSpeed, 0) * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            this.gameObject.transform.position += new Vector3(currentMovementSpeed, 0, 0) * Time.deltaTime;
-            isCharacterFlipped = false;
-        }
-
+    private void CharacterFlip()
+    {
         if (isCharacterFlipped)
         {
             this.gameObject.transform.localScale = new Vector3(-1, this.gameObject.transform.localScale.y);

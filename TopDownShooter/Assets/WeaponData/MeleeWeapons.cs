@@ -1,24 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using System.Xml.Serialization;
+using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MeleeWeapons : MonoBehaviour
 {
     public float damage;
     public float knockback;
     public float swingDelay;
-
-    Animator animator;
-    private bool swingDelayed;
+    public float armLength;
     
-    public void Swing(float delay)
+    public Transform shoulder;
+    public Animator animator;
+    public bool swingDelayed;
+
+    private void Start()
     {
-        animator = GetComponentInParent<Animator>();
+        animator = this.GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    public void Attack()
+    {
         if (swingDelayed)
             return;
-        animator.SetTrigger("Attack");
+        Attack();
         swingDelayed = true;
-        StartCoroutine(DelaySwing(delay));
+        StartCoroutine(DelaySwing(swingDelay));
     }
 
     private IEnumerator DelaySwing(float delay)

@@ -10,10 +10,10 @@ public class PauseMenu : MonoBehaviour
     {
         isPaused = false;
         this.gameObject.SetActive(false);
-        UIManager.EscapeKeyPressedEvent += PauseGameMenu;
+        InputManager.InputEscapeEvent += PauseGameMenu;
     }
     
-    private void PauseGameMenu(object source, EscapeKeyPressedArgs args)
+    private void PauseGameMenu(object source, InputEscapeArgs args)
     {
         if(isPaused == false)
         {
