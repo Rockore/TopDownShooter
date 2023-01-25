@@ -20,24 +20,19 @@ public class Spike : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Triggered Spike Collidier");
-        if(collision.tag == "PlayerBody")
+        if(collision.tag == "Feet")
         {
-            Debug.Log("Spike collidied with player");
             if(this.gameObject.tag == "NormSpikes")
             {
-                Debug.Log("Player Hit NormSpike");
                 PlayerHealth.RemoveHealth(1);
             }
             else if (this.gameObject.tag == "RedSpikes")
             {
-                Debug.Log("Player Hit RedSpikes");
                 PlayerHealth.SetCurrentHealth(1);
             }
             else if (this.gameObject.tag == "GoldSpikes")
             {
-                Debug.Log("Player Hit GoldSpikes");
-                Debug.Log("Removed 1 gold from player");
+                PlayerMoney.RemoveMoney(1);
             }
         }
     }

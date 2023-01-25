@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class ProtoSword : MeleeWeapons
 {
-    // Start is called before the first frame update
+    [SerializeField] MeleeWeaponScriptableObject weaponData;
+    public Animator animator;
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
+        InputManager.InputMouseLeftEvent += ProtoSwordAttack;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ProtoSwordAttack(object source, InputMouseLeftArgs args)
     {
-        
+        Attack(animator, weaponData.swingDelay);
     }
 }

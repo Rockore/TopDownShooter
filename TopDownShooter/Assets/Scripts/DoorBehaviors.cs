@@ -17,6 +17,8 @@ public class DoorBehaviors : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerBody")
         {
+            Debug.Log(collision.gameObject.tag);
+            Debug.Log("Triggered Door");
             OpenDoorAnimate();
             GoThroughDoor(this.gameObject.tag);
         }

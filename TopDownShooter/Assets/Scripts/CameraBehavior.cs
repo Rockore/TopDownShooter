@@ -17,7 +17,6 @@ public class CameraBehavior : MonoBehaviour
         switch (args.Direction)
         {
             case "TopDoor":
-
                 StartCoroutine(cameraUp());
                 break;
 

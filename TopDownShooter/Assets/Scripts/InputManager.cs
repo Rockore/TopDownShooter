@@ -50,7 +50,7 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             InputMouseLeft();
         }
@@ -82,7 +82,7 @@ public class InputManager : MonoBehaviour
 
     private static void InputMouseLeft()
     {
-        InputMouseLeftEvent?.Invoke(null, new InputMouseLeftArgs() {});
+        InputMouseLeftEvent?.Invoke(null, new InputMouseLeftArgs() { });
     }
     private static void InputW()
     {

@@ -9,30 +9,35 @@ public class WeaponParent : MonoBehaviour
 
     private void Update()
     {
-        FollowMouse();
+        if (gameObject.transform.parent.localScale.x < 0)
+        {
+            MousePlayerLeft();
+        }
+        else if (gameObject.transform.parent.localScale.x > 0)
+        {
+            MousePlayerRight();
+        }
     }
 
-    private void FollowMouse()
+    private void MousePlayerLeft()
     {
+        float offset = 0;
+        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        difference.Normalize();
+        float rotationZ = Mathf.Atan2(-difference.y, -difference.x) * Mathf.Rad2Deg;
+        rotationZ = Mathf.Clamp(rotationZ, -45, 45);
+        transform.rotation = Quaternion.Euler(0f, 0f, rotationZ + offset);
+    }
+
+    private void MousePlayerRight()
+    {
+        float offset = 0;
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         difference.Normalize();
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        FlipSprite(rotationZ);
-        this.transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
+        rotationZ = Mathf.Clamp(rotationZ, -45, 45);
+        transform.rotation = Quaternion.Euler(0f, 0f, rotationZ + offset);
     }
 
-    private void FlipSprite(float rotation)
-    {
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Fix This~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        Vector2 scale = transform.localScale;
-        if (rotation < 90)
-        {
-            scale.y = -1f;
-        }
-        else if (rotation > -90)
-        {
-            scale.y = 1f;
-        }
-        transform.localScale = scale;
-    }
+
 }

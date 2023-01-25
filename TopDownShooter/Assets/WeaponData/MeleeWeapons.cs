@@ -8,31 +8,14 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class MeleeWeapons : MonoBehaviour
-{
-    public float damage;
-    public float knockback;
-    public float swingDelay;
-    public float armLength;
-    
-    public Transform shoulder;
-    public Animator animator;
-    public bool swingDelayed;
+{   
+    private bool swingDelayed;
 
-    private void Start()
-    {
-        animator = this.GetComponent<Animator>();
-    }
-
-    private void Update()
-    {
-        
-    }
-
-    public void Attack()
+    public void Attack(Animator animator, float swingDelay)
     {
         if (swingDelayed)
             return;
-        Attack();
+        animator.SetTrigger("Attack");
         swingDelayed = true;
         StartCoroutine(DelaySwing(swingDelay));
     }

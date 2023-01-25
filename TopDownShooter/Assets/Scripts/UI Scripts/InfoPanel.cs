@@ -19,25 +19,20 @@ public class InfoPanel : MonoBehaviour
 
     private void SlideInfoPanel(object source, InputTabArgs args)
     {
-        Debug.Log("SlideInfoPanel");
         if (isInfoPanelExtended == true) 
         {
-            Debug.Log(isInfoPanelExtended);
             StartCoroutine(CollapseInfoPanel());
         }
         else
         {
-            Debug.Log(isInfoPanelExtended);
             StartCoroutine(ExtendInfoPanel());
         }
     }
 
     private IEnumerator ExtendInfoPanel()
     {
-        Debug.Log("Enter ExtendInfoPanel");
         for (int i = 0; i < 90; i++)
         {
-            Debug.Log("Extending Info Panel");
             this.gameObject.transform.position += new Vector3(2, 0);
             yield return new WaitForSecondsRealtime(0.0001f);
         }
@@ -46,10 +41,8 @@ public class InfoPanel : MonoBehaviour
 
     private IEnumerator CollapseInfoPanel()
     {
-        Debug.Log("Enter CollapseInfoPanel");
         for (int i = 0; i < 90; i++)
         {
-            Debug.Log("Collapsing Info Panel");
             this.gameObject.transform.position -= new Vector3(2, 0);
             yield return new WaitForSecondsRealtime(0.0001f);
         }

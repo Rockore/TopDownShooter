@@ -22,6 +22,10 @@ TagManager:
   - HealthBar
   - ActionBar
   - PauseMenu
+  - GoldCoin
+  - RedCoin
+  - GreenCoin
+  - Feet
   layers:
   - Default
   - TransparentFX
