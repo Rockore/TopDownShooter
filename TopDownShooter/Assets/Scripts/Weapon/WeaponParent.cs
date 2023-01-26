@@ -38,6 +38,4 @@ public class WeaponParent : MonoBehaviour
         rotationZ = Mathf.Clamp(rotationZ, -45, 45);
         transform.rotation = Quaternion.Euler(0f, 0f, rotationZ + offset);
     }
-
-
 }

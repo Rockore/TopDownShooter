@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5320716465337903241}
   - component: {fileID: 2528173984560561734}
   - component: {fileID: 7416922441441444381}
+  - component: {fileID: -1037136333162261241}
   m_Layer: 0
   m_Name: DullSword
   m_TagString: Untagged
@@ -98,4 +99,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 4a89b15a134d3154d89e1a50fa27c2a3, type: 2}
-  animator: {fileID: 0}
+  animator: {fileID: -1037136333162261241}
+--- !u!95 &-1037136333162261241
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629421388940951957}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4b73c0c085345641b3920df71295225, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

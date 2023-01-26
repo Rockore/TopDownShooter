@@ -6,6 +6,7 @@ public class ProtoSword : MeleeWeapons
 {
     [SerializeField] MeleeWeaponScriptableObject weaponData;
     public Animator animator;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -14,6 +15,8 @@ public class ProtoSword : MeleeWeapons
 
     private void ProtoSwordAttack(object source, InputMouseLeftArgs args)
     {
+        if (GameObject.Find("ProtoSword") == null)
+            return;
         Attack(animator, weaponData.swingDelay);
     }
 }

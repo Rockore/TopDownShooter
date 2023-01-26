@@ -1,11 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DullSword : MeleeWeapons
 {
     [SerializeField] MeleeWeaponScriptableObject weaponData;
     public Animator animator;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -14,6 +14,8 @@ public class DullSword : MeleeWeapons
 
     private void DullSwordAttack(object source, InputMouseLeftArgs args)
     {
+        if(GameObject.Find("DullSword") == null) 
+            return;
         Attack(animator, weaponData.swingDelay);
     }
 }
