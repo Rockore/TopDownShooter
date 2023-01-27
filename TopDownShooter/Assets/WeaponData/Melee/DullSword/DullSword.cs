@@ -14,8 +14,6 @@ public class DullSword : MeleeWeapons
 
     private void DullSwordAttack(object source, InputMouseLeftArgs args)
     {
-        if(GameObject.Find("DullSword") == null) 
-            return;
         Attack(animator, weaponData.swingDelay);
     }
 }
