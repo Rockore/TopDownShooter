@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private float cameraHeight;
     private float cameraWidth;
     private bool isCharacterFlipped;
+    private GameObject player;
 
     public static Vector2 playerRoomPosition;
 
@@ -20,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
         cameraWidth = cameraHeight * Camera.main.aspect;
 
         DoorBehaviors.GoThroughDoorEvent += MovePlayerRooms;
+        player = GameObject.FindGameObjectWithTag("PlayerBody");
 
         InputManager.InputWEvent += MoveUp;
         InputManager.InputAEvent += MoveLeft;
@@ -32,23 +35,32 @@ public class PlayerMovement : MonoBehaviour
         Sprint();
     }
 
+    private void OnDestroy()
+    {
+        InputManager.InputWEvent -= MoveUp;
+        InputManager.InputAEvent -= MoveLeft;
+        InputManager.InputSEvent -= MoveDown;
+        InputManager.InputDEvent -= MoveRight;
+        DoorBehaviors.GoThroughDoorEvent -= MovePlayerRooms;
+    }
+
     private void MoveUp(object source, InputWArgs args)
     {
-        this.gameObject.transform.position += new Vector3(0, currentMovementSpeed, 0) * Time.deltaTime;
+        player.transform.position += new Vector3(0, currentMovementSpeed, 0) * Time.deltaTime;
     }
     private void MoveLeft(object source, InputAArgs args)
     {
-        this.gameObject.transform.position += new Vector3(-currentMovementSpeed, 0, 0) * Time.deltaTime;
+        player.transform.position += new Vector3(-currentMovementSpeed, 0, 0) * Time.deltaTime;
         isCharacterFlipped = true;
         CharacterFlip();
     }
     private void MoveDown(object source, InputSArgs args)
     {
-        this.gameObject.transform.position += new Vector3(0, -currentMovementSpeed, 0) * Time.deltaTime;
+        player.transform.position += new Vector3(0, -currentMovementSpeed, 0) * Time.deltaTime;
     }
     private void MoveRight(object source, InputDArgs args)
     {
-        this.gameObject.transform.position += new Vector3(currentMovementSpeed, 0, 0) * Time.deltaTime;
+        player.transform.position += new Vector3(currentMovementSpeed, 0, 0) * Time.deltaTime;
         isCharacterFlipped = false;
         CharacterFlip();
     }

@@ -17,4 +17,9 @@ public class ProtoSword : MeleeWeapons
     {
         Attack(animator, weaponData.swingDelay);
     }
+
+    private void OnDestroy()
+    {
+        InputManager.InputMouseLeftEvent -= ProtoSwordAttack;
+    }
 }
