@@ -12,6 +12,11 @@ public class InfoPanel : MonoBehaviour
         InputManager.InputTabEvent += SlideInfoPanel;
     }
 
+    private void OnDestroy()
+    {
+        InputManager.InputTabEvent -= SlideInfoPanel;
+    }
+
     void Update()
     {
         

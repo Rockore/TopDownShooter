@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class Enemy : MonoBehaviour
 {
@@ -26,9 +27,7 @@ public class Enemy : MonoBehaviour
 
     public void GoTowardsPlayer()
     {
-        enemyPosition = this.transform.position;
-        playerPosition = GameObject.FindGameObjectWithTag("PlayerBody").transform.position;
-        this.transform.position = Vector3.MoveTowards(enemyPosition, playerPosition, movementSpeed * Time.deltaTime);
+        this.gameObject.GetComponent<AIDestinationSetter>().target = GameObject.FindGameObjectWithTag("PlayerBody").transform;
     }
 
     public void MeleeAttack()
@@ -45,4 +44,16 @@ public class Enemy : MonoBehaviour
     {
 
     }
+
+    /*public bool IsPlayerInRoom()
+    {
+        if ()
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }*/
 }

@@ -5,5 +5,6 @@ using UnityEngine;
 
 public class AllWeaponsArray : MonoBehaviour
 {
-    public GameObject[] MeleeWeapons;
+    public MeleeWeaponScriptableObject ProtoSword;
+    public MeleeWeaponScriptableObject[] MeleeWeapons;
 }

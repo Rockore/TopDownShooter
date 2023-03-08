@@ -5,33 +5,20 @@ using UnityEngine;
 public class CurrentWeapon : MonoBehaviour
 {
     [SerializeField] AllWeaponsArray _AllWeaponArray;
-    public GameObject currentWeapon;
+    [SerializeField] EquippedWeaponsUI _EquippedWeaponsUI;
+    private GameObject currentWeapon;
     private float scrollTimer = 0;
     private int scrollNumber = 0;
     private bool weaponIsChanging;
-
-    private void Start()
-    {
-        SpawnWeapon(_AllWeaponArray.MeleeWeapons[0]);
-    }
 
     private void Update()
     {
         ChangeCurrentWeapon();
     }
 
-    private void SpawnWeapon(GameObject weapon)
-    {
-        currentWeapon = Instantiate(weapon,this.gameObject.transform.parent);
-    }
-
-    private void DestroyWeapon(GameObject weapon)
-    {
-        Destroy(weapon);
-    }
-
     private void ChangeCurrentWeapon()
     {
+        //Change UI weapon name while scrolling 
         if(Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             scrollNumber++;
@@ -68,8 +55,7 @@ public class CurrentWeapon : MonoBehaviour
 
             if (scrollTimer >= .5f)
             {
-                DestroyWeapon(currentWeapon);
-                SpawnWeapon(_AllWeaponArray.MeleeWeapons[scrollNumber]);
+                //Change UI image to current weapon
                 weaponIsChanging = false;
             }
         }

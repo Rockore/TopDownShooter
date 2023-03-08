@@ -72,4 +72,5 @@ public class CameraBehavior : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.0075f);
         }
     }
+
 }

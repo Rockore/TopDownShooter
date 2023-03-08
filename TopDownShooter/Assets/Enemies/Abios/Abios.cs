@@ -16,7 +16,7 @@ public class Abios : Enemy
 
     private void Update()
     {
-        GoTowardsPlayer();
+
     }
 
     private void OnCollisionEnter(Collision collision)

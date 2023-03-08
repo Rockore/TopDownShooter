@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 911efba458b18564eb4c9f9f68a2d291, type: 3}
-  m_Name: DullSwordData
+  m_Name: DullSword
   m_EditorClassIdentifier: 
-  weaponName: DullSword
-  description: Was once sharp
-  damage: 1
-  knockback: 1
-  swingDelay: 1
-  armLength: 1
-  rarity: Common
+  weaponName: Dull Sword
+  description: 
+  weaponImage: {fileID: 21300000, guid: c5fb8d8b4cd94804c9e36fb4b1f6fbee, type: 2}
+  damage: 0
+  knockback: 0
+  swingDelay: 0
+  size: 0
+  rarity: 
