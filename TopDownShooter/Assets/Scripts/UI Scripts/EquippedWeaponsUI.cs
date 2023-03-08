@@ -7,10 +7,10 @@ public class EquippedWeaponsUI : MonoBehaviour
 {
     [SerializeField] CurrentWeapon _CurrentWeapon;
     [SerializeField] AllWeaponsArray _AllWeaponArray;
-    [SerializeField] Image currentWeaponUI;
-    [SerializeField] Image otherWeaponUI;
-    private GameObject currentWeapon;
-    private GameObject otherWeapon;
+    [SerializeField] Image currentWeaponUIImage;
+    [SerializeField] Image otherWeaponUIImage;
+    private GameObject currentWeaponUI;
+    private GameObject otherWeaponUI;
 
 
     private void AddWeaponUI()

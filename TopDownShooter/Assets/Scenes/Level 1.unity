@@ -1551,9 +1551,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "To-Do: Change how weapons work in game. Weapons shouldn't be visible on
-    character, only on UI element. \nMake a generic weapon swing animation\n(Start
-    at EquippedWeaponUI)\n"
+  m_text: 'To-Do: FIX HOW WEAPONS CYCLE
+
+    Make a generic weapon swing animation
+
+    (Start
+    at CurrentWeapons)
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3081,8 +3086,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CurrentWeapon: {fileID: 1711114797}
   _AllWeaponArray: {fileID: 468585311}
-  currentWeaponUI: {fileID: 0}
-  otherWeaponUI: {fileID: 262950467}
+  currentWeaponUIImage: {fileID: 0}
+  otherWeaponUIImage: {fileID: 0}
 --- !u!1 &1471012220
 GameObject:
   m_ObjectHideFlags: 0
@@ -3677,7 +3682,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _AllWeaponArray: {fileID: 468585311}
   _EquippedWeaponsUI: {fileID: 1388017965}
-  currentWeapon: {fileID: 0}
 --- !u!1 &1815440722
 GameObject:
   m_ObjectHideFlags: 0
